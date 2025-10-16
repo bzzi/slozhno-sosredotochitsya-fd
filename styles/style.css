@@ -1,5 +1,150 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
+/* база */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  margin: 0;
+  padding: 0; /* переносим паддинг в header */
+  background-image: var(--page-bg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: var(--main-font-family);
+  font-size: var(--main-text-size);
+}
+
+.header {
+  position: relative;
+  display: grid;
+  grid-auto-rows: min-content;
+
+  padding: var(--main-gap); /* паддинг здесь */
+  height: 100vh; /* адекватно на мобилках */
+  min-height: 668px;
+}
+
+/* декор привязываем к тому же отступу, что и контент */
+.decorated-zone::before,
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+}
+
+.decorated-zone::before {
+  inset: var(--main-gap) var(--main-gap) auto auto; /* верх-право */
+  border-inline-end: 1px solid var(--accent-color);
+  border-block-start: 1px solid var(--accent-color);
+}
+
+.decorated-zone::after {
+  inset: auto auto var(--main-gap) var(--main-gap);
+  border-inline-start: 1px solid var(--accent-color);
+  border-block-end: 1px solid var(--accent-color);
+}
+
+.header__theme-menu {
+  justify-self: end;
+  align-self: start;
+  margin-block-start: 65px;
+  margin-block-end: 66px;
+}
+.header__theme-menu-item {
+  display: inline-flex;
+}
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header__theme-menu-button {
+  background: transparent;
+  color: var(--accent-color);
+  border: none;
+  padding: 0 13px;
+  line-height: 18px;
+  white-space: nowrap;
+  text-transform: lowercase;
+  font-size: var(--main-text-size);
+  line-height: 24px;
+}
+
+.header__theme-menu-button_active {
+  outline: 1px solid #ff0070;
+}
+
+/* заголовок: не шире контейнера, тени аккуратнее */
+.header__title {
+  margin: 0;
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 0.825;
+  text-shadow: 2px 2px 0 var(--accent-color); /* было 4px — режем на мобилках */
+  color: var(--main-title-color);
+  word-wrap: break-word;
+  margin-block-end: 55px;
+}
+.title-decor {
+  background-color: #ff0070;
+}
+.header__description {
+  color: #000028;
+
+  font-weight: 700;
+  line-height: 23.4px;
+}
+.header__description p {
+}
+
+/* микроподжать ультра-узкие */
+@media (max-width: 339px) {
+  .header {
+    padding: calc(var(--main-gap) * 0.75);
+  }
+}
+
+/* 375+ — если нужно, лёгкие правки меню/отступов */
+@media (min-width: 375px) {
+}
+
+/* 768+ — планшет/десктопная формула заголовка и иное поведение меню */
+@media (min-width: 768px) {
+  .header__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    text-shadow: 4px 4px 0 var(--accent-color); /* возвращаем жирную тень */
+  }
+  .header__theme-menu {
+    justify-self: end;
+    align-self: start;
+    margin-block-start: 182px;
+  }
+}
+
+/* 1024+ — третий макет: только то, что реально отличается */
+@media (min-width: 1024px) {
+  .header__theme-menu {
+    justify-self: center;
+    inset-block-start: 65px;
+    margin-block-start: 0;
+    padding-inline-start: 0;
+  }
+  .header__theme-menu-list {
+    flex-direction: row; /* у тебя тут был дубль column/row — оставляем одно состояние */
+    gap: 23px;
+  }
+  .br {
+    display: none;
+  }
 }

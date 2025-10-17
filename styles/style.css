@@ -15,6 +15,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-color: #000534;
   font-family: var(--main-font-family);
   font-size: var(--main-text-size);
 }
@@ -23,7 +24,6 @@
   position: relative;
   display: grid;
   grid-auto-rows: min-content;
-
   padding: var(--main-gap); /* паддинг здесь */
   height: 100vh; /* адекватно на мобилках */
   min-height: 668px;
@@ -91,7 +91,7 @@
   overflow-wrap: anywhere;
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   line-height: 0.825;
-  text-shadow: 2px 2px 0 var(--accent-color); /* было 4px — режем на мобилках */
+  text-shadow: 4px 4px 0 var(--accent-color);
   color: var(--main-title-color);
   word-wrap: break-word;
   margin-block-end: 55px;
@@ -105,9 +105,40 @@
   font-weight: 700;
   line-height: 23.4px;
 }
-.header__description p {
+.section {
+  display: grid;
+  padding: 0 10px;
+  color: var(--main-text-color);
+  padding-block-start: 40px;
+  padding-block-end: 50px;
+  background-color: #000028;
 }
-
+.section__title {
+  font-size: var(--main-text-size);
+  font-weight: 700;
+  line-height: 23.4px; /* 130% */
+  color: var(--accent-color);
+  margin-block-end: 20px;
+}
+.focus-reasons__subtitle {
+  color: var(--h3-subtitle-color);
+  font-size: var(--main-text-size);
+  margin-block-end: 10px;
+}
+.link {
+  text-shadow: 1px 1px 0 #ff0070;
+  text-decoration: none;
+  color: inherit;
+}
+.link:visited {
+  color: inherit;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.link:focus {
+  outline: 1px solid #f1b2ce;
+}
 /* микроподжать ультра-узкие */
 @media (max-width: 339px) {
   .header {

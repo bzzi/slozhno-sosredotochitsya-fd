@@ -11,6 +11,7 @@
   */
   --page-bg: url("../images/cover-image-light.png");
   --accent-color: #ff8dcb;
+  --main-text-color: #353430;
 }
 :root.theme-light .header__rec {
   display: none;

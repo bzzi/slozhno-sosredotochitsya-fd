@@ -9,7 +9,7 @@
 
 .page {
   margin: 0;
-  padding: 0; /* переносим паддинг в header */
+  padding: 0;
   background-image: var(--page-bg);
   background-position: center;
   background-size: cover;
@@ -24,12 +24,10 @@
   position: relative;
   display: grid;
   grid-auto-rows: min-content;
-  padding: var(--main-gap); /* паддинг здесь */
-  height: 100vh; /* адекватно на мобилках */
+  padding: var(--main-gap);
+  height: 100vh;
   min-height: 668px;
 }
-
-/* декор привязываем к тому же отступу, что и контент */
 .decorated-zone::before,
 .decorated-zone::after {
   content: "";
@@ -39,7 +37,7 @@
 }
 
 .decorated-zone::before {
-  inset: var(--main-gap) var(--main-gap) auto auto; /* верх-право */
+  inset: var(--main-gap) var(--main-gap) auto auto;
   border-inline-end: 1px solid var(--header-main-color);
   border-block-start: 1px solid var(--header-main-color);
 }

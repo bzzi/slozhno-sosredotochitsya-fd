@@ -13,8 +13,6 @@
 }
 .header__rec {
   display: block;
-}
-.header__rec {
   position: absolute;
   color: var(--header-main-color);
   font-size: var(--main-text-size);

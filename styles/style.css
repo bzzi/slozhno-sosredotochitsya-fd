@@ -71,7 +71,6 @@
   color: var(--header-main-color);
   border: none;
   padding: 0 13px;
-  line-height: 18px;
   white-space: nowrap;
   text-transform: lowercase;
   font-size: var(--main-text-size);
@@ -92,6 +91,9 @@
   text-shadow: 4px 4px 0 var(--accent-color);
   color: var(--main-title-color);
   word-wrap: break-word;
+}
+.header__title {
+  margin-block-end: 55px;
 }
 h2.footer__title {
   text-shadow: 2px 2px 0 var(--footer-title-color);
@@ -138,6 +140,9 @@ h2.footer__title {
   color: var(--subtitle-color);
   font-size: var(--main-text-size);
   margin-block-end: 10px;
+}
+h3.focus-gallery__subtitle {
+  margin-block-end: 0;
 }
 h3.focus-tips__subtitle {
   margin-block-end: -1px;
@@ -235,6 +240,9 @@ img {
   }
   .focus-gallery {
     padding-block-end: 60px;
+  }
+  h3.focus-gallery__subtitle {
+    margin-block-end: 10px;
   }
   .focus-gallery__content {
     grid-template-columns: repeat(3, 1fr);

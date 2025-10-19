@@ -12,6 +12,11 @@
   --page-bg: url("../images/cover-image-light.png");
   --accent-color: #ff8dcb;
   --main-text-color: #353430;
+  --subtitle-color: #353430;
+  --section-bg-color: #fff1f7;
+  --section-title-color: #353430;
+  --section-title-bg-color: #ff8dcb;
+  --header-main-color: #353430;
 }
 :root.theme-light .header__rec {
   display: none;

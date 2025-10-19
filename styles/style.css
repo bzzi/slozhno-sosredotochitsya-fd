@@ -40,14 +40,14 @@
 
 .decorated-zone::before {
   inset: var(--main-gap) var(--main-gap) auto auto; /* верх-право */
-  border-inline-end: 1px solid var(--accent-color);
-  border-block-start: 1px solid var(--accent-color);
+  border-inline-end: 1px solid var(--header-main-color);
+  border-block-start: 1px solid var(--header-main-color);
 }
 
 .decorated-zone::after {
   inset: auto auto var(--main-gap) var(--main-gap);
-  border-inline-start: 1px solid var(--accent-color);
-  border-block-end: 1px solid var(--accent-color);
+  border-inline-start: 1px solid var(--header-main-color);
+  border-block-end: 1px solid var(--header-main-color);
 }
 
 .header__theme-menu {
@@ -70,7 +70,7 @@
 
 .header__theme-menu-button {
   background: transparent;
-  color: var(--accent-color);
+  color: var(--header-main-color);
   border: none;
   padding: 0 13px;
   line-height: 18px;
@@ -81,11 +81,11 @@
 }
 
 .header__theme-menu-button_active {
-  outline: 1px solid #ff0070;
+  outline: 1px solid var(--header-main-color);
 }
 
-/* заголовок: не шире контейнера, тени аккуратнее */
-.header__title {
+.header__title,
+.footer__title {
   margin: 0;
   max-inline-size: 100%;
   overflow-wrap: anywhere;
@@ -94,10 +94,12 @@
   text-shadow: 4px 4px 0 var(--accent-color);
   color: var(--main-title-color);
   word-wrap: break-word;
-  margin-block-end: 55px;
+}
+h2.footer__title {
+  text-shadow: 2px 2px 0 var(--footer-title-color);
 }
 .title-decor {
-  background-color: #ff0070;
+  background-color: var(--section-title-bg-color);
 }
 .header__description {
   color: #000028;
@@ -106,34 +108,45 @@
   line-height: 23.4px;
 }
 .focus-reasons,
-.focus-factors {
+.focus-factors,
+.focus_tips {
   grid-template-columns: 1fr;
 }
 
 .section {
   display: grid;
   gap: 20px;
-  padding: 0 10px;
+  padding: 0 var(--main-gap);
   color: var(--main-text-color);
   padding-block-start: 40px;
-  padding-block-end: 10px;
-  background-color: #000028;
+  padding-block-end: var(--main-gap);
   line-height: 23.4px; /* 130% */
+}
+.fosuc-footer,
+.section {
+  background: var(--section-bg-color);
 }
 .section__title {
   font-size: var(--main-text-size);
   font-weight: 700;
   line-height: 23.4px; /* 130% */
-  color: var(--accent-color);
+  color: var(--section-title-color);
 }
 
 .focus-reasons__subtitle,
-.focus-factors__subtitle {
-  color: var(--h3-subtitle-color);
+.focus-factors__subtitle,
+.focus-tips__subtitle,
+.focus-gallery__subtitle {
+  color: var(--subtitle-color);
   font-size: var(--main-text-size);
   margin-block-end: 10px;
 }
-.focus-reasons__list {
+h3.focus-tips__subtitle {
+  margin-block-end: -1px;
+}
+.focus-reasons__list,
+.focus-tips__item,
+.focus-factors__list {
   display: grid;
   gap: 20px;
 }
@@ -151,40 +164,121 @@
 .link:focus {
   outline: 1px solid #f1b2ce;
 }
-/* микроподжать ультра-узкие */
-@media (max-width: 339px) {
-  .header {
-    padding: calc(var(--main-gap) * 0.75);
-  }
+
+.focus-tips__item-subtitle {
+  font-weight: 400;
+  color: var(--subtitle-color);
+  margin-block-end: 10px;
+}
+.focus-gallery__content {
+  display: grid;
+  gap: 10px;
+}
+img {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+.focus-gallery {
+  gap: 10px;
+  padding-block-end: 40px;
+}
+.fosuc-footer {
+  position: relative;
+  height: 100vh;
+  min-height: 667px;
+  padding: var(--main-gap);
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
 }
 
-/* 375+ — если нужно, лёгкие правки меню/отступов */
-@media (min-width: 375px) {
-}
-
-/* 768+ — планшет/десктопная формула заголовка и иное поведение меню */
 @media (min-width: 768px) {
+  :root {
+    --main-gap: 20px;
+  }
+  .header {
+    min-height: 1024px;
+    gap: 108px;
+  }
   .header__title {
-    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-    text-shadow: 4px 4px 0 var(--accent-color); /* возвращаем жирную тень */
+    position: relative;
+    inset-inline-start: calc(-1 * var(--main-gap));
+  }
+  .header__description {
+    width: 50%;
+    justify-self: end;
+    height: max-content;
   }
   .header__theme-menu {
-    justify-self: end;
-    align-self: start;
-    margin-block-start: 182px;
+    margin-block-start: 172px;
+  }
+  .section {
+    padding-block-start: 60px;
   }
   .focus-reasons {
     grid-template-columns: 1fr 2fr;
   }
+  .focus-tips > .section__title {
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+  .focus-tips > .focus-tips__item {
+    grid-column: 2;
+  }
+
   .focus-reasons__item {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+  }
+  .section__title {
+    max-width: 236px;
+  }
+  .focus-gallery {
+    padding-block-end: 60px;
+  }
+  .focus-gallery__content {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "sunset sunset ice-cream"
+      "tape books ice-cream"
+      "tape street street";
+    gap: 20px;
+  }
+  .focus-gallery__img_sunset {
+    grid-area: sunset;
+  }
+  .focus-gallery__img_ice-cream {
+    grid-area: ice-cream;
+  }
+  .focus-gallery__img_tape {
+    grid-area: tape;
+  }
+  .focus-gallery__img_books {
+    grid-area: books;
+  }
+  .focus-gallery__img_street {
+    grid-area: street;
+  }
+  .focus-gallery__content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .footer__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    margin-block-end: 0;
   }
 }
 
-/* 1024+ — третий макет: только то, что реально отличается */
 @media (min-width: 1024px) {
+  .header {
+    min-height: 768px;
+    gap: 0;
+    grid-template-rows: 1fr 2fr 1fr;
+  }
   .header__theme-menu {
     justify-self: center;
     inset-block-start: 65px;
@@ -192,10 +286,21 @@
     padding-inline-start: 0;
   }
   .header__theme-menu-list {
-    flex-direction: row; /* у тебя тут был дубль column/row — оставляем одно состояние */
+    flex-direction: row;
     gap: 23px;
   }
-  .br {
-    display: none;
+  .header__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    align-self: center;
+    margin-block-end: 0;
+  }
+  .section__title {
+    max-width: 314px;
+  }
+  .focus-reasons {
+    gap: 10px;
+  }
+  .focus-factors__list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

@@ -7,5 +7,10 @@
   --main-gap: 10px;
   --main-line-height: 1.3;
   --page-bg: url("../images/cover-image-dark.png");
-  --h3-subtitle-color: #000028;
+  --subtitle-color: #000028;
+  --section-bg-color: #000028;
+  --section-title-color: #ff0070;
+  --section-title-bg-color: #ff0070;
+  --footer-title-color: #ff0070;
+  --header-main-color: #ff0070;
 }

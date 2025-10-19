@@ -16,7 +16,7 @@
 }
 .header__rec {
   position: absolute;
-  color: var(--accent-color);
+  color: var(--header-main-color);
   font-size: var(--main-text-size);
   line-height: var(--main-line-height);
   text-transform: uppercase;

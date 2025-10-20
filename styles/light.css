@@ -17,7 +17,9 @@
   --section-title-color: #353430;
   --section-title-bg-color: #ff8dcb;
   --header-main-color: #353430;
+  --header-rec-display: none;
+  --main-title-color: #ffc2e6;
 }
 :root.theme-light .header__rec {
-  display: none;
+  display: var(--header-rec-display);
 }

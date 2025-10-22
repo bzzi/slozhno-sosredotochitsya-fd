@@ -10,6 +10,8 @@
     чем стили в медиазапросе предпочтений пользователя
   */
   --page-bg: url("../images/cover-image-light.png");
+  --header-border-color-hover: rgba(50, 49, 45, 0.4);
+
   --accent-color: #ff8dcb;
   --main-text-color: #353430;
   --subtitle-color: #353430;
@@ -20,6 +22,27 @@
   --header-rec-display: none;
   --main-title-color: #ffc2e6;
 }
-:root.theme-light .header__rec {
-  display: var(--header-rec-display);
+
+@media (prefers-color-scheme: light) {
+  :root.theme-light,
+  :root:not(.theme-dark) {
+    --header-rec-display: none;
+    --footer-title-color: #ff0070;
+    --header-border-color-hover: rgba(50, 49, 45, 0.4);
+
+    --page-bg: url("../images/cover-image-light.png");
+    --accent-color: #ff8dcb;
+    --main-text-color: #353430;
+    --subtitle-color: #353430;
+    --section-bg-color: #fff1f7;
+    --section-title-color: #353430;
+    --section-title-bg-color: #ff8dcb;
+    --header-main-color: #353430;
+    --header-rec-display: none;
+    --main-title-color: #ffc2e6;
+  }
+
+  :root:not(.theme-light):not(.theme-dark) .header__rec {
+    display: var(--header-rec-display);
+  }
 }

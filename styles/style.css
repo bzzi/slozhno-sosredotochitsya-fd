@@ -1,26 +1,10 @@
-:root {
-  color-scheme: dark light;
-
-  --page-bg: url("../images/cover-image-dark.png");
-  --header-rec-display: block;
-  --header-main-color: #ff0070;
-  --accent-color: #ff0070;
-  --main-title-color: #db00ff;
-  --section-title-bg-color: #ff0070;
-  --subtitle-color: #000028;
-  --section-bg-color: #000028;
-  --section-title-color: #ff0070;
-  --footer-title-color: #ff0070;
-  --main-text-color: #f1b2ce;
-}
-
 .page {
   background-image: var(--page-bg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: #000028;
+  background-color: var(--section-bg-color);
   font-family: var(--main-font-family);
   font-size: var(--main-text-size);
 }
@@ -97,7 +81,6 @@
 }
 
 .header__theme-menu-button {
-  /* у меня в инспекторе отображется именно заданный шнифт по макету "IBM Plex mono", monospace*/
   background: transparent;
   color: var(--header-main-color);
   border: none;
@@ -115,7 +98,7 @@
 }
 
 .header__theme-menu-button:hover {
-  outline: 1px solid var(--header-main-color);
+  outline: 1px solid var(--header-border-color-hover);
 }
 
 .header__theme-menu-button:focus {
@@ -132,7 +115,6 @@
   line-height: 0.825;
   text-shadow: 4px 4px 0 var(--accent-color);
   color: var(--main-title-color);
-  /* проверил: цвета сходятся с теми, что в макете светлой темы */
   word-wrap: break-word;
 }
 
@@ -144,8 +126,8 @@ h2.footer__title {
   text-shadow: 2px 2px 0 var(--footer-title-color);
 }
 
-.title-decor {
-  background-color: var(--section-title-bg-color);
+.title-no-bg {
+  background-color: transparent;
 }
 
 .header__description {
@@ -170,12 +152,6 @@ h2.footer__title {
   line-height: 23.4px; /* 130% */
 }
 
-.fosuc-footer,
-.section {
-  background: var(--section-bg-color);
-  /* согласно макету и заданию этот фон необходим */
-}
-
 .section__title {
   font-size: var(--main-text-size);
   font-weight: 700;
@@ -187,7 +163,6 @@ h2.footer__title {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: var(--section-bg-color);
   color: var(--main-text-color);
 }
 
@@ -195,7 +170,7 @@ h2.footer__title {
   color: var(--subtitle-color);
   font-size: var(--main-text-size);
   font-weight: 700;
-  margin-block-end: 10px;
+  background-color: var(--section-title-bg-color);
 }
 
 .card__text {
@@ -210,14 +185,13 @@ h2.footer__title {
 }
 
 .focus-reasons__list,
-.focus-tips__item,
 .focus-factors__list {
   display: grid;
   gap: 20px;
 }
 
 .link {
-  text-shadow: 1px 1px 0 #ff0070;
+  text-shadow: 1px 1px 0 var(--accent-color);
   text-decoration: none;
   color: inherit;
 }
@@ -235,12 +209,12 @@ h2.footer__title {
   outline: 1px solid var(--main-text-color);
 }
 
-.focus-tips__item-subtitle {
-  font-weight: 400;
-  color: var(--subtitle-color);
+.focus-tips .card__title {
   margin-block-end: 10px;
 }
-
+.focus-tips h4.card__title {
+  font-weight: 400;
+}
 .focus-gallery__content {
   display: grid;
   gap: 10px;
@@ -308,7 +282,7 @@ img {
     grid-row: 1 / -1;
   }
 
-  .focus-tips > .focus-tips__item {
+  .focus-tips > .card {
     grid-column: 2;
   }
 
@@ -397,25 +371,5 @@ img {
 
   .focus-factors__list {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root:not(.theme-light):not(.theme-dark) {
-    --page-bg: url("../images/cover-image-light.png");
-    --accent-color: #ff8dcb;
-    --main-text-color: #353430;
-    --subtitle-color: #353430;
-    --section-bg-color: #fff1f7;
-    --section-title-color: #353430;
-    --section-title-bg-color: #ff8dcb;
-    --header-main-color: #353430;
-    --header-rec-display: none;
-    --main-title-color: #ffc2e6;
-    --footer-title-color: #353430;
-  }
-
-  :root:not(.theme-light):not(.theme-dark) .header__rec {
-    display: var(--header-rec-display);
   }
 }
